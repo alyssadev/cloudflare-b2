@@ -84,10 +84,11 @@ export default {
 
         // Reject list bucket requests unless configuration allows it
         if (isListBucketRequest(env, path) && String(env['ALLOW_LIST_BUCKET']) !== "true") {
-            return new Response(null, {
-                status: 404,
-                statusText: "Not Found"
-            });
+              path = path + "/index.html";
+//            return new Response(null, {
+//                status: 404,
+//                statusText: "Not Found"
+//            });
         }
 
         // Set RCLONE_DOWNLOAD to "true" to use rclone with --b2-download-url
